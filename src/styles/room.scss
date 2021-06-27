@@ -82,3 +82,18 @@
         }
     }
 }
+
+@media (max-width: 616px) {
+    
+    form .form-footer {
+        flex-direction: column;
+    }
+
+    form .form-footer .user-info {
+        flex-direction: column;
+    }
+
+    form .form-footer button {
+        margin-top: 10px;
+    }
+}

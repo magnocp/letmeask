@@ -143,3 +143,15 @@
 
     
 }
+
+@media (max-width: 877px) {
+    #page-auth aside {
+        width: 50%;
+    }
+}
+
+@media (max-width: 800px) {
+    #page-auth aside {
+        display: none;
+    }
+}

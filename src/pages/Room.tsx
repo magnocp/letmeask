@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+
 import { useAuth } from '../hooks/useAuth';
 import { database } from '../services/firebase';
 
@@ -16,15 +17,21 @@ type RoomParams = {
     id: string;
 }
 
+
 export function Room() {
-    const { user } = useAuth();
+    const { user, signInWithGoogle } = useAuth();
     const params = useParams<RoomParams>();
     const [newQuestion, setNewQuestion] = useState('');
     const roomId = params.id;
 
     const { title, questions } = useRoom(params.id);
 
+    async function loginGoogle() {
 
+        if (!user) {
+            await signInWithGoogle();
+        }
+    }
 
     async function handleSendQuestion(event: FormEvent) {
         event.preventDefault();
@@ -33,7 +40,7 @@ export function Room() {
         }
 
         if (!user) {
-            throw new Error('You mustbe logged in.');
+            throw new Error('Você deve estar logado.');
         }
 
         const question = {
@@ -85,7 +92,7 @@ export function Room() {
                                 <span>{user.name}</span>
                             </div>
                         ) : (
-                            <span>Para enviar uma pergunta, <button>faça seu login</button>.</span>
+                            <span>Para enviar uma pergunta, <button onClick={loginGoogle}>faça seu login</button>.</span>
                         )
                         }
 
