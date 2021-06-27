@@ -5,12 +5,11 @@ import { useAuth } from '../hooks/useAuth';
 import { database } from '../services/firebase';
 
 import { Button } from '../components/Button';
-import { RoomCode } from '../components/RoomCode';
+import { Header } from '../components/Header';
 import { Question } from '../components/Question';
 
 import { useRoom } from '../hooks/useRoom';
 
-import logoImg from '../assets/images/logo.svg';
 import '../styles/room.scss';
 
 type RoomParams = {
@@ -64,12 +63,7 @@ export function Room() {
 
     return (
         <div id="page-room">
-            <header>
-                <div className="content">
-                    <img src={logoImg} alt="Letmeask" />
-                    <RoomCode code={roomId} />
-                </div>
-            </header>
+            <Header /> 
 
             <main className="content">
                 <div className="room-title">
